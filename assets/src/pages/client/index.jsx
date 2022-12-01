@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
+const URL = "http://localhost:8000/api/clients";
+
 export const Client = () => {
   const [clients, getClients] = useState([]);
 
   const getAllClients = async () => {
     await axios
-      .get("http://localhost:8000/api/clients")
+      .get(`${URL}`)
       .then((response) => {
         console.log(response.data["hydra:member"]);
       })
