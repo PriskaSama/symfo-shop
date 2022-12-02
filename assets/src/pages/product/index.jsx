@@ -6,7 +6,7 @@ const URL = "https://localhost:8000/api/products";
 const { id } = useParams;
 
 export const Product = () => {
-  const [products, getProducts, deleteProducts, addProducts, name, description, price, setName, setDescription, setPrice] = useState([]);
+  const [products, getProducts, deleteProducts, addProducts, name, description, price, addName, addDescription, setPrice] = useState([]);
 
   const getAllProducts = async () => {
     await axios
@@ -34,16 +34,14 @@ export const Product = () => {
       });
   };
 
-  const addProduct = (id, name, description, price) => {
+  const addProduct = () => {
     const product = axios
-    .post(`https://localhost:8000/product`, `${id}`, `${name, description, price}`)
+    .post(`https://localhost:8000/product`, {name: "", description: "", price: ""})
     .then((response) => {
-      postProduct(response.data.name, response.data.description, response.data.price)
       console.log();
-      alert("Produit ajouté");
     })
     .catch((error) => {
-      console.error(error);
+      console.log(error.response.data);
     })
   };
 
@@ -65,13 +63,13 @@ export const Product = () => {
           marginBottom: "2rem",
         }}
       >
-        <label htmlFor="name" >Nom</label>
-        <input type="text" name="name" value={nom}/>
-        <label htmlFor="description" > Description</label>
+        <label htmlFor="name">Nom</label>
+        <input type="text" name="name" value={name}/>
+        <label htmlFor="description">Description</label>
         <textarea name="description" rows={"10"} value={description}/>
-        <label htmlFor="price" >Prix</label>
-        <input type="number" value={prix}/>
-        <button type="submit" onClick={() => addProduct()}>
+        <label htmlFor="price">Prix</label>
+        <input type="number" value={price}/>
+        <button type="submit" onClick={addProduct}>
           Envoyer
         </button>
       </form>
