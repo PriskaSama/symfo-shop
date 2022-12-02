@@ -3,10 +3,10 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const URL = "https://localhost:8000/api/products";
-const {id}=useParams;
+const { id } = useParams;
 
 export const Product = () => {
-  const [products, getProducts, deleteProducts] = useState([]);
+  const [products, getProducts, deleteProducts, addProducts, name, description, price, setName, setDescription, setPrice] = useState([]);
 
   const getAllProducts = async () => {
     await axios
@@ -18,7 +18,6 @@ export const Product = () => {
       .catch((error) => {
         console.error(error);
       });
-      alert 
   };
 
   // fonction pour sélectionner les données qui devront être supprimés.
@@ -28,10 +27,24 @@ export const Product = () => {
       .then((response) => {
         getAllProducts();
         console.log();
+        alert("Produit supprimé");
       })
       .catch((error) => {
         console.error(error);
       });
+  };
+
+  const addProduct = (id, name, description, price) => {
+    const product = axios
+    .post(`https://localhost:8000/product`, `${id}`, `${name, description, price}`)
+    .then((response) => {
+      postProduct(response.data.name, response.data.description, response.data.price)
+      console.log();
+      alert("Produit ajouté");
+    })
+    .catch((error) => {
+      console.error(error);
+    })
   };
 
   useEffect(() => {
@@ -52,35 +65,33 @@ export const Product = () => {
           marginBottom: "2rem",
         }}
       >
-        <label htmlFor="name">Nom du produit :</label>
-        <input type="text" name="name" />
-        <label htmlFor="description"> Description du produit :</label>
-        <textarea name="description" rows={"10"} />
-        <label htmlFor="price">Prix :</label>
-        <input type="number" />
-        <button type="button" onClick={() => submitForm()}>
+        <label htmlFor="name" >Nom</label>
+        <input type="text" name="name" value={nom}/>
+        <label htmlFor="description" > Description</label>
+        <textarea name="description" rows={"10"} value={description}/>
+        <label htmlFor="price" >Prix</label>
+        <input type="number" value={prix}/>
+        <button type="submit" onClick={() => addProduct()}>
           Envoyer
         </button>
       </form>
       <hr style={{ marginBottom: "5rem" }} />
 
-
       {products.map((product) => {
-
         return (
           <div key={product.id}>
             <ul>
               <li>Nom du produit : {product.name}</li>
               <li>Description du produit : {product.description}</li>
               <li>Prix : {product.price} €</li>
-              <button type="button" onClick={() => addProduct()}>
+              <button type="submit" onClick={() => addProduct()}>
                 Ajouter au panier
               </button>
               <button type="button" onClick={() => updateProduct()}>
                 Modifier le produit
               </button>
               {/* Permettre au bouton de valider le produit supprimé, ajouter id du produit  */}
-              <button type="button" onClick={() => deleteProduct(product.id)}>  
+              <button type="button" onClick={() => deleteProduct(product.id)}>
                 Supprimer le produit
               </button>
             </ul>
