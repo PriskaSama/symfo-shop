@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+// import { DeleteProduct } from "./functions/deleteProduct";
 
 const URL = "https://localhost:8000/api/products";
 const { id } = useParams;
@@ -21,18 +22,20 @@ export const Product = () => {
   };
 
   // fonction pour sélectionner les données qui devront être supprimés.
-  const deleteProduct = (id) => {
-    const product = axios
-      .delete(`https://localhost:8000/api/products/${id}`)
-      .then((response) => {
-        getAllProducts();
-        console.log();
-        alert("Produit supprimé");
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  // const deleteProduct = (id) => {
+  //   const product = axios
+  //     .delete(`https://localhost:8000/api/products/${id}`)
+  //     .then((response) => {
+  //       getAllProducts();
+  //       console.log();
+  //       alert("Produit supprimé");
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // };
+
+  
 
   const addProduct = () => {
     const product = axios
@@ -75,21 +78,21 @@ export const Product = () => {
       </form>
       <hr style={{ marginBottom: "5rem" }} />
 
-      {products.map((product) => {
+      {products.map((product, key) => {
         return (
-          <div key={product.id}>
+          <div key={key}>
             <ul>
               <li>Nom du produit : {product.name}</li>
               <li>Description du produit : {product.description}</li>
               <li>Prix : {product.price} €</li>
               <button type="submit" onClick={() => addProduct()}>
-                Ajouter au panier
+                Afficher le produit
               </button>
               <button type="button" onClick={() => updateProduct()}>
                 Modifier le produit
               </button>
               {/* Permettre au bouton de valider le produit supprimé, ajouter id du produit  */}
-              <button type="button" onClick={() => deleteProduct(product.id)}>
+              <button type="button" onClick={() => DeleteProduct(product.id)}>
                 Supprimer le produit
               </button>
             </ul>
