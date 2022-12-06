@@ -15,7 +15,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "tailwind": "npx tailwindcss -i ./src/input.css -o ../backend/public/assets/css/styles.css --watch"
+    "tailwind": "npx tailwindcss -i ./src/assets/css/styles.css -o ../backend/public/assets/css/styles.css --watch"
   },
   "dependencies": {
     "@babel/preset-react": "^7.18.6",
