@@ -17,7 +17,7 @@
   "scripts": {
     "start": "run-p start:**",
     "start:symfony": "cd backend && npm run symfony",
-    "start:react": "cd backend @@ npm run react",
+    "start:react": "cd backend && npm run react",
     "tailwind": "cd frontend && npm run tailwind"
 
   },
