@@ -12,6 +12,7 @@ import { Product } from "../../pages/product";
 import { CreateProduct } from "../../pages/product/functions/createProduct";
 
 export const Provider = createBrowserRouter([
+  
   {
     path: "/",
     element: <Home />

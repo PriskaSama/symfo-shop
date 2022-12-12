@@ -8,37 +8,37 @@ export const CreateProduct = () => {
     price: 0,
   });
 
-  // faire un set product de name pour la fonction on change name
+  // faire un set product de name pour la fonction On Change name
 
-  const OnchangeName = (event) => {
+  const onChangeName = (event) => {
     setProduct({
       ...product,
       name: event.target.value,
     });
   };
 
-  const OnchangeDescription = (event) => {
+  const onChangeDescription = (event) => {
     setProduct({
-      ...product,
-      name: event.target.value,
+        ...product,
+        description: event.target.value,
     });
-  };
+};
 
-  const OnchangePrice = (event) => {
+  const onChangePrice = (event) => {
     setProduct({
-      ...product,
-      name: event.target.value,
+        ...product,
+        price: parseFloat(event.target.value),
     });
-  };
+};
 
   const SubmitProduct = (event) => {
     event.preventDefault();
     
-let formData = {
-  name: "string",
-  description: "string",
-  price: 0,
-};
+    let formData = {
+      name: product.name,
+      description: product.description,
+      price: product.price,
+  };
 
     axios.post(`${URL_PRODUCT_CREATE}`, formData).then((response) => {
       console.log(response);
@@ -48,7 +48,7 @@ let formData = {
   return (
     <>
       <h1>Créer un produit</h1>
-      <form onSubmit={() => SubmitProduct()}>
+      <form onSubmit={(event) => SubmitProduct(event)}>
         <label htmlFor="name">Nom du produit</label>
         <input
           id={"name"}
@@ -79,4 +79,5 @@ let formData = {
   );
 };
 
-// event prevent default, permet de submit mais sans refresh tout le contenu de la page
+// Event Prevent Default, permet de submit mais sans refresh tout le contenu de la page
+

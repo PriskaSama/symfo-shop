@@ -40,7 +40,7 @@ export const Home = () => {
     <Navbar />
       {postsSymfony.map((post) => {
         return (
-          <div key={post.id}>
+          <div key={post.id} classeName="bg-red-500">
             <ul>
               <li>Votre nom est : {post.name}</li>
               <li>Vous avez {post.age} ans !</li>
@@ -52,7 +52,7 @@ export const Home = () => {
         return (
           <div key={post.id}>
             <ul>
-              <li>Le tire du post : {post.title}</li>
+              <li className="text-red-500">Le tire du post : {post.title}</li>
               <li>Le corps du message : {post.body}</li>
             </ul>
           </div>

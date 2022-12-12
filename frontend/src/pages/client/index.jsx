@@ -23,7 +23,7 @@ export const Client = () => {
 
   return (
     <>
-      <h1>HELLO CLIENT</h1>
+      <h1 className="text-red-500">HELLO CLIENT</h1>
       {clients.map((client) => {
         return (
           <div key={client.id}>

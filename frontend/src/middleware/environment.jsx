@@ -1,4 +1,4 @@
-// en js pour créer une constante importante on utilise le Snake_Case. 
+// En js pour créer une constante importante on utilise le Snake_Case. 
 
 // CLIENT URL
 export const URL_CLIENT = "http://localhost:8000/api/clients";

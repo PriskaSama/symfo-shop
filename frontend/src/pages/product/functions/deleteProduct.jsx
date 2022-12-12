@@ -4,7 +4,7 @@ import { URL_PRODUCT } from "../../../middleware/environment";
 import PropTypes from "prop-types";
 
 
-const DeleteProduct = (id) => {
+export const DeleteProduct = (id) => {
   Swal.fire({
     title: "Etes vous sur ?",
     text: "Opération irréversible",
@@ -43,5 +43,3 @@ const DeleteProduct = (id) => {
 DeleteProduct.propTypes = {
   id: PropTypes.number,
 };
-
-export default DeleteProduct;
