@@ -7,17 +7,21 @@ import { EditProduct } from "./functions/editProduct";
 import { ShowProduct } from "./functions/showProduct";
 import { CreateProduct } from "./functions/createProduct";
 import { GetAllProducts } from "./functions/getAllProduct";
+// import {
+//   URL_PRODUCT,
+//   URL_PRODUCT_CREATE,
+//   URL_PRODUCT_SHOW
+// } from "../../../middleware/environment";
 
 
 
 
-const Product = () => {
+export const Product = () => {
   return(
     <>
     <GetAllProducts />
     <EditProduct />
     <CreateProduct />
-    
     </>
 
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { DeleteProduct } from "./deleteProduct";
 
 import {
   URL_PRODUCT,
@@ -8,7 +9,6 @@ import {
   URL_PRODUCT_SHOW,
   URL_PRODUCT_EDIT,
 } from "../../../middleware/environment";
-import DeleteProduct from "./deleteProduct";
 
 export const GetAllProducts = () => {
   const [allProducts, setAllProducts] = useState([]);

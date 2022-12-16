@@ -43,22 +43,23 @@ export const EditProduct = () => {
     });
   };
 
-  useEffect(() => {
-    loadProduct();
-  }, []);
-
+  
   const SubmitProduct = async (event) => {
     event.preventDefault();
-
+    
     await axios.put(`${URL_PRODUCT_EDIT}/${id}`, formData).then((reponse) => {
       console.log(response);
     });
-
-    const loadProduct = async () => {
-      const result = await axios.get(`${URL_PRODUCT_EDIT}/${id}`);
+    
+    const loadProduct = () => {
+      const result = axios.get(`${URL_PRODUCT_EDIT}/${id}`);
       setProduct(result.data);
     };
 
+    useEffect(() => {
+    loadProduct();
+    }, []);
+    
     return (
       <>
         <h1>Modifier un produit</h1>

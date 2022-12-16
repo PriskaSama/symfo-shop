@@ -1,5 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
+import {
+  URL_PRODUCT,
+  URL_PRODUCT_CREATE,
+  URL_PRODUCT_SHOW,
+  URL_PRODUCT_EDIT,
+  URL_PRODUCT_ALL,
+} from "../../../middleware/environment";
 
 export const CreateProduct = () => {
   const [product, setProduct] = useState({
@@ -73,7 +81,8 @@ export const CreateProduct = () => {
           type="text"
           name="name"
         />
-        <button type="submit">Envoyer</button>
+        <Link to={`${URL_PRODUCT_ALL}/${product.id}`}>Voir tous les produits</Link>
+        <button type="submit" onClick={() => CreateProduct(product.id)}>Envoyer</button>
       </form>
     </>
   );
