@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Navbar } from "../../components/navbar";
+import { Navbar } from "../../components/index";
 import axios from "axios";
+import process from "process";
 
 const URL = "https://jsonplaceholder.typicode.com/posts/";
 
@@ -12,7 +13,7 @@ export const Home = () => {
 
   const getPostsSymfony = async () => {
     await axios
-      .get(`${URL_}`)
+      .get(`${process.env.URL}`)
       .then((response) => {
         getAllPostsSymfony(response.data["hydra:member"]);
       })
@@ -23,7 +24,7 @@ export const Home = () => {
 
   const getPosts = async () => {
     await axios
-      .get(`${URL}`)
+      .get(`${process.env.URL}`)
       .then((response) => {
         getAllPosts(response.data);
       })
@@ -33,6 +34,13 @@ export const Home = () => {
   useEffect(() => {
     getPostsSymfony();
     getPosts();
+    // console.log(window.user);
+    // console.log(process);
+  }, []);
+
+  // pour avoir access a l'utilisateur depuis le front
+  useEffect(() => {
+    console.log(window.user);
   }, []);
 
   return (
@@ -40,7 +48,7 @@ export const Home = () => {
     <Navbar />
       {postsSymfony.map((post) => {
         return (
-          <div key={post.id} classeName="bg-red-500">
+          <div key={post.id} classeName="bg-pink-500">
             <ul>
               <li>Votre nom est : {post.name}</li>
               <li>Vous avez {post.age} ans !</li>
@@ -52,7 +60,7 @@ export const Home = () => {
         return (
           <div key={post.id}>
             <ul>
-              <li className="text-red-500">Le tire du post : {post.title}</li>
+              <li className="text-red-800">Le tire du post : {post.title}</li>
               <li>Le corps du message : {post.body}</li>
             </ul>
           </div>

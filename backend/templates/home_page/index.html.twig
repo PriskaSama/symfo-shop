@@ -3,7 +3,10 @@
 {% block title %}Hello HomePageController!{% endblock %}
 
 {% block body %}
-
+{# declaration de variable, window.user, et user stocké dans la home page #}
+<script>
+        window.user = {{ user|raw }};
+    </script>
 <div id="root"><div/>
 
 {% endblock %}

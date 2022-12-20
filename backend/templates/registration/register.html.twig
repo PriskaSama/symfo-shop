@@ -6,12 +6,20 @@
     <h1>Register</h1>
 
     {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
+        <div class="flex flex-col">
+        <label for="registration_form_email" class="required">Email</label> 
+        {{ form_widget(registrationForm.email) }}
+        </div>
+        <div>
+        <label for="registration_form_plainPassword" class="required">Mot de passe</label> 
+        {{ form_widget(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
+        </div>
+        <div>
+        <label for="registration_form_agreeTerms" class="required">Agree Terms</label> 
+        {{ form_widget(registrationForm.agreeTerms) }}
+        </div>
         <button type="submit" class="btn">Register</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

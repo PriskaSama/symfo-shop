@@ -1,8 +1,7 @@
 import Swal from "sweetalert2";
 import axios from "axios";
-import { URL_PRODUCT } from "../../../middleware/environment";
 import PropTypes from "prop-types";
-
+import process from "process";
 
 export const DeleteProduct = (id) => {
   Swal.fire({
@@ -14,7 +13,7 @@ export const DeleteProduct = (id) => {
     confirmButtonText: "Supprimer !",
   }).then((result) => {
     if (result.isConfirmed) {
-      axios.delete(`${URL_PRODUCT}/${id}`).then(() => {
+      axios.delete(`${process.env.URL_PRODUCT}/${id}`).then(() => {
         Swal.fire({
           icon: "success",
           title: "Projet supprimé",

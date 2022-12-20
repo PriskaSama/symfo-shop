@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
-import { URL_PRODUCT_EDIT } from "../../middleware/environment";
 import { DeleteProduct } from "./functions/deleteProduct";
 import { EditProduct } from "./functions/editProduct";
 import { ShowProduct } from "./functions/showProduct";
@@ -26,7 +25,7 @@ export const Product = () => {
 
 
   )
-}
+};
 
 // const URL = "https://localhost:8000/api/products";
 // const {id} = useParams;

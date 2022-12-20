@@ -10,6 +10,8 @@ import { Product } from "../../pages/product";
 
 // CRUD OPERATIONS PRODUCTS
 import { CreateProduct } from "../../pages/product/functions/createProduct";
+import { EditProduct } from "../../pages/product/functions/editProduct";
+import ShowProduct from "../../pages/product/functions/showProduct";
 
 export const Provider = createBrowserRouter([
   
@@ -28,6 +30,14 @@ export const Provider = createBrowserRouter([
   {
     path: "/products/create",
     element: <CreateProduct />
+  },
+  {
+    path: "/products/show/:id",
+    element: <ShowProduct />
+  },
+  {
+    path: "/products/edit/:id",
+    element: <EditProduct />
   },
 
 ]);

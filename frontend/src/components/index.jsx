@@ -5,14 +5,14 @@ export const Navbar = () => {
   return (
     <nav>
       <ul>
-        <li>
+        <li className="bg-pink-500 uppercase">
           <Link to={`/`}>Accueil</Link>
         </li>
         <li>
           <Link to={`/clients`}>Clients</Link>
         </li>
 
-        <li className="text-red-500">
+        <li>
           <Link to={`/products`}>Produits</Link>
         </li>
       </ul>
